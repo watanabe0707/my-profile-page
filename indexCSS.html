@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己紹介ページ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 
+        ===== 基本的なスタイリング =====
+        */
+        
+        /* 
+        body要素のスタイリング
+        - font-family: フォントの指定（複数指定することで、端末にない場合は次のフォントが適用される）
+        - line-height: 行間の高さ（1.6は文字サイズの1.6倍の高さ）
+        - margin: 要素の外側の余白（0はマージンなし）
+        - padding: 要素の内側の余白（20pxは全方向に20ピクセルの余白）
+        - background-color: 背景色（#f5f5f5は薄いグレー）
+        - color: 文字色（#333は暗めのグレー）
+        */
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* 
+        .container クラスのスタイリング
+        - max-width: 最大幅（800px以上には広がらない）
+        - margin: 0 auto で中央揃え（上下のマージンは0、左右は自動で均等に）
+        - background-color: 背景色（白）
+        - padding: 内側の余白（30px）
+        - border-radius: 角の丸み（10pxは角を10ピクセル丸くする）
+        - box-shadow: ボックスの影（水平方向のずれ 垂直方向のずれ ぼかしの大きさ 影の広がり 色）
+          0 0 10px rgba(0, 0, 0, 0.1)は、ずれはなく、10pxのぼかし、10%の不透明度の黒色の影
+        */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 
+        header要素のスタイリング
+        - text-align: テキストの配置（centerで中央揃え）
+        - margin-bottom: 下側のマージン（30pxの余白）
+        */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* 
+        h1見出しのスタイリング
+        - color: 文字色（#2c3e50は濃いブルーグレー）
+        - border-bottom: 下側の境界線（2pxの実線で色は#3498db）
+        - padding-bottom: 下側の内部余白（10px）
+        */
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* 
+        h2見出しのスタイリング
+        - color: 文字色（#3498dbは青色）
+        - margin-top: 上側のマージン（25px）
+        */
+        h2 {
+            color: #3498db;
+            margin-top: 25px;
+        }
+
+        /* 
+        ===== プロフィール画像のスタイリング =====
+        */
+        
+        /* 
+        .profile-image クラスのスタイリング
+        - width, height: 画像の幅と高さ（150px × 150px）
+        - border-radius: 50%で円形に切り抜き
+        - object-fit: cover で画像がコンテナにフィットするようにするが、縦横比は維持
+        - margin: 0 auto で中央揃え
+        - display: block で要素をブロック要素として表示（前後に改行が入る）
+        - border: 枠線（3pxの実線で色は#3498db）
+        */
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+            border: 3px solid #3498db;
+        }
+
+        /* 
+        ===== セクションのスタイリング =====
+        */
+        
+        /* 
+        .info-section クラスのスタイリング
+        - margin-bottom: 下側のマージン（25px）
+        */
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        /* 
+        ulリストのスタイリング
+        - list-style-type: リストマークの種類（circleは円形の黒点）
+        */
+        ul {
+            list-style-type: circle;
+        }
+
+        /* 
+        ===== 趣味リストのスタイリング =====
+        */
+        
+        /* 
+        .hobby-list クラスのスタイリング
+        - display: flex でフレックスボックスレイアウトを使用（要素を横並びにする）
+        - flex-wrap: wrap で要素が多い場合に折り返す
+        - gap: 要素間の隙間（10px）
+        */
+        .hobby-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* 
+        .hobby-item クラスのスタイリング
+        - background-color: 背景色（#e1f0faは薄い青色）
+        - padding: 内側の余白（上下5px、左右15px）
+        - border-radius: 角の丸み（20pxで丸いピル型のボタン風）
+        - display: inline-block でインラインブロック要素として表示
+          （インラインでありながら幅や高さの指定が可能）
+        */
+        .hobby-item {
+            background-color: #e1f0fa;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* 
+        ===== フッターのスタイリング =====
+        */
+        
+        /* 
+        footer要素のスタイリング
+        - text-align: テキストの配置（centerで中央揃え）
+        - margin-top: 上側のマージン（30px）
+        - font-size: フォントサイズ（0.9emは親要素より10%小さい）
+        - color: 文字色（#7f8c8dはグレー）
+        */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        /* 
+        ===== リンクのスタイリング =====
+        */
+        
+        /* 
+        aリンク要素のスタイリング
+        - color: リンクの色（#3498dbは青色）
+        - text-decoration: テキストの装飾（noneで下線なし）
+        - transition: 変化の効果（color 0.3sで色の変化を0.3秒かけて行う）
+        */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        /* 
+        a:hover 擬似クラス - マウスをホバーした時のリンクスタイル
+        - color: ホバー時の色（#2980b9は濃い青色）
+        - text-decoration: テキストの装飾（underlineで下線あり）
+        */
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* 
+        ===== レスポンシブデザイン =====
+        メディアクエリを使って画面幅に応じてスタイルを変更
+        - @media (max-width: 600px): 画面幅が600px以下の場合に適用されるスタイル
+        */
+        @media (max-width: 600px) {
+            /* コンテナの内側余白を小さくする */
+            .container {
+                padding: 15px;
+            }
+            /* 見出しのサイズを小さくする */
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="IMG_1686.JPG" alt="プロフィール画像" class="profile-image">
+            <!--img src="/api/placeholder/150/150" alt="プロフィール画像" class="profile-image"-->
+            <h1>渡邊佑都</h1>
+            <p>早稲田大学/人間科学部健康福祉科学科</p>
+        </header>
+
+        <section class="info-section">
+            <h2>自己紹介</h2>
+            <p>
+                渡邊佑都です。趣味はR&B系やヒップホップ系の音楽を聴くことです。中学高校では水泳とピアノに精を出していて、今はギターに挑戦しています。
+            現在の目標は英語の苦手を克服することです。
+            </p>
+        </section>
+
+        <section class="info-section">
+            <h2>基本情報</h2>
+            <ul>
+                <li><strong>年齢:</strong> 20歳</li>
+                <li><strong>出身地:</strong> 山梨県</li>
+                <li><strong>大学:</strong> 早稲田大学</li>
+                <li><strong>学部/学科:</strong>人間科学部/健康福祉科学科</li>
+                <li><strong>メール:</strong> 非公開</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>趣味・特技</h2>
+            <div class="hobby-list">
+                <span class="hobby-item">読書</span>
+                <span class="hobby-item">音楽鑑賞</span>
+                <span class="hobby-item">旅行</span>
+                <span class="hobby-item">水泳</span>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>好きなもの</h2>
+            <ul>
+                <li><strong>好きな本:</strong> 置かれた場所で咲きなさい</li>
+                <li><strong>好きな映画:</strong> ウォッチメン</li>
+                <li><strong>好きな食べ物:</strong> ラーメン</li>
+                <li><strong>好きな場所:</strong> 友達といる場所なら基本どこでも</li>
+            </ul>
+        </section>
+        <section>
+            <h2>これまで履修した科目のベスト３</h2>
+            
+            <ol>
+                <!-- ol要素：順序付きリスト（番号付きリスト）を作成します -->
+                
+                <li><strong></strong> 心理学概論</li>
+                <li><strong></strong> 統計リテラシーα</li>
+                <li><strong></strong> 情報学</li>
+            </ol>
+        </section>
+        
+        <section class="info-section">
+            <h2>目標</h2>
+            <p>
+                私は英語が苦手なのですが、グローバル化の進む現代社会において、英語のスキルが求められることが不可避であるため、英語の苦手を克服し英語に強い人材になることが今の私の目標です。
+            また卒業後はその英語力を活かして海外でキャリアを形成したいと考えています。
+            </p>
+        </section>
+        <table>
+            <h2>履修科目一覧</h2>
+            <tread>
+                <tr>
+                    <th>科目名</th>
+                    <th>単位数</th>
+                    <th>成績</th>
+                </tr>
+            </tread>
+            <tbody>
+                <tr>
+                    <td>心理学概論<td>
+                    <td>2<td>
+                    <td>A+<td>
+                </tr>
+                <tr>
+                    <td>統計リテラシーα<td>
+                    <td>1<td>
+                    <td>A+<td>
+                </tr>
+                <tr>
+                    <td>情報学<td>
+                    <td>2<td>
+                    <td>A<td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <p>© 2025 あなたの名前 - このページは HTML と CSS の学習のために作成されました</p>
+            <p>
+                <a href="#">Twitter</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="#">GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
